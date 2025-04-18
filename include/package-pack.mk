@@ -112,6 +112,7 @@ endif
     KEEP_$(1):=$(strip $(call Package/$(1)/conffiles))
     APK_SCRIPTS_$(1):=\
     --script "post-install:$$(ADIR_$(1))/post-install" \
+    --script "post-upgrade:$$(ADIR_$(1))/post-install" \
     --script "pre-deinstall:$$(ADIR_$(1))/pre-deinstall"
 
     ifdef Package/$(1)/postrm
