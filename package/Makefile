@@ -145,7 +145,8 @@ else
 		$(SCRIPT_DIR)/make-index-json.py -f opkg -a "$(ARCH_PACKAGES)" Packages > index.json; \
 		gzip -9nc Packages > Packages.gz; \
 	); done
-ifdef CONFIG_SIGNED_PACKAGES
+	@echo "CONFIG_SIGNED_PACKAGES = '$(CONFIG_SIGNED_PACKAGES)'"
+ifneq ($(CONFIG_SIGNED_PACKAGES),)
 	@echo Signing package index...
 	@for d in $(PACKAGE_SUBDIRS); do ( \
 		[ -d $$d ] && \
